@@ -1,6 +1,9 @@
 export class Person {
-
-    constructor(firstname:string, surname: string, email: string){
+   
+    constructor(
+        public firstName:string, 
+        public surname: string, 
+        public email: string){
 
     }
 

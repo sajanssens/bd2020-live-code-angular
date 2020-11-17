@@ -1,3 +1,5 @@
+<h1>Datepicker</h1>
+
 <form (submit)="addContact()">
 	<div>
 		<label for="firstName">First name:</label>
@@ -10,23 +12,27 @@
 	<div>
 		<label for="email">E-mail address:</label>
 		<input type="text" id="email" name="email" [(ngModel)]="newContact.email">
+    <button>Add</button>
 	</div>
 
-	<button>Add contact</button>
 </form>
 
+<h2>The contacts</h2>
+
 <table class="table">
-  <tr>
-    <th>Name</th>
-    <th>E-mail address</th>
-    <th></th>
+  <tr >
+    <th scope="col">Name</th>
+    <th scope="col">E-mail address</th>
+    <th scope="col"></th>
   </tr>
-  <tr *ngFor="let contact of contacts">
+  <tr scope="row" *ngFor="let contact of persons">
     <td>{{contact.firstName}} {{contact.surname}}</td>
     <td>{{contact.email}}</td>
     <td>
-      <button class="btn">Edit</button>
-      <button class="btn btn-danger">Delete</button>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+      </div>
     </td>
   </tr>
 </table>
