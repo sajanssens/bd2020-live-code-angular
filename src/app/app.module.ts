@@ -5,7 +5,7 @@ import { Route, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
-import { HomeComponent } from './pages/home/home.component';
+import { HomeComponent } from './pages/home/home';
 
 let routes: Route[] = [
   { path: '', component: HomeComponent },
