@@ -12,11 +12,11 @@ export class TemplateDrivenFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.postalCode = "";
+    this.postalCode = '';
   }
 
-  save(){
-    console.log(this.postalCode);    
+  save(): void {
+    console.log(this.postalCode);
   }
 
 }

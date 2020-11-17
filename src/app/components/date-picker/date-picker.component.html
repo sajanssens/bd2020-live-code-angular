@@ -14,7 +14,6 @@
 		<input type="text" id="email" name="email" [(ngModel)]="newContact.email">
     <button>Add</button>
 	</div>
-
 </form>
 
 <h2>The contacts</h2>
@@ -31,7 +30,7 @@
     <td>
       <div class="btn-group" role="group" aria-label="Basic example">
         <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger" (click)="delete(contact)">Delete</button>
       </div>
     </td>
   </tr>

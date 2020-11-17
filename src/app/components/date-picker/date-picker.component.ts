@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Contact } from 'src/app/models/contact';
 import { Person } from 'src/app/models/Person';
 
 
@@ -20,15 +19,20 @@ export class DatePickerComponent {
   ]
 
   // Interface --> JSON
-  contacts: Contact[] = [
-    { firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com' },
-    { firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com' },
-    { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
-  ];
+  // contacts: Contact[] = [
+  //   { firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com' },
+  //   { firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com' },
+  //   { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
+  // ];
 
-  addContact() {
+  addContact(): void {
     // this.contacts.push(this.newContact);
     this.persons.push(this.newContact);
     this.newContact = new Person();
+  }
+
+  delete(p: Person): void {
+    const i = this.persons.indexOf(p);
+    this.persons.splice(i, 1);
   }
 }
