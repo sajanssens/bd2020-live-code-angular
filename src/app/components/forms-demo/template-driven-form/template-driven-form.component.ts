@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateDrivenFormComponent implements OnInit {
 
+  postalCode: string;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.postalCode = "";
+  }
+
+  save(){
+    console.log(this.postalCode);    
   }
 
 }

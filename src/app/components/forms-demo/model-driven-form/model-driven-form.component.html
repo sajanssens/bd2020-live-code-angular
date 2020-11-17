@@ -1,0 +1,8 @@
+<H2>model-driven-form</H2>
+<form (ngSubmit)="save()" [formGroup]="postalCodeForm">
+    <div class="form-group">
+        <label for="inputPostalCode">Postcode:</label>
+        <input type="text" id="inputPostalCode" formControlName="postalCode">
+        <button [disabled]="postalCodeForm.invalid" class="btn btn-primary">Save</button>
+    </div>
+</form>
