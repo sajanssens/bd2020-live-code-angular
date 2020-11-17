@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Contact } from './models/contact';
-import { Person } from './models/Person';
 
 @Component({ // decorator, meta data
   selector: 'app-root',
@@ -9,25 +7,6 @@ import { Person } from './models/Person';
 })
 export class AppComponent {
 
-  newContact = new Person('','','');
+  today = new Date();
 
-  // Class --> object
-  persons: Person[] = [
-    new Person('Sam', 'Smith', 'sam.smith@music.com'),
-    new Person('Frank', 'Muscles', 'frank@muscles.com'),
-    new Person('Eddy', 'Valentino', 'eddy@valfam.co.uk')
-  ]
-
-  // Interface --> JSON
-  contacts: Contact[] = [
-    { firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com' },
-    { firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com' },
-    { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
-  ];
-
-  addContact() {
-    // this.contacts.push(this.newContact);
-    this.persons.push(this.newContact);
-    this.newContact = new Person('','','');
-  }
 }
