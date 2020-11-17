@@ -8,8 +8,9 @@ import { Person } from 'src/app/models/Person';
   styleUrls: ['./date-picker.component.css']
 })
 export class DatePickerComponent {
-  
+
   newContact = new Person();
+  editLabel = 'Edit';
 
   // Class --> object
   persons: Person[] = [
@@ -34,5 +35,10 @@ export class DatePickerComponent {
   delete(p: Person): void {
     const i = this.persons.indexOf(p);
     this.persons.splice(i, 1);
+  }
+
+  edit(p: Person): void {
+    p.edit = !p.edit;
+    this.editLabel = p.edit ? 'Save' : 'Edit';
   }
 }

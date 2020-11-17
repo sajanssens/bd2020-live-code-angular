@@ -1,36 +1,44 @@
 <h1>Datepicker</h1>
 
 <form (submit)="addContact()">
-	<div>
-		<label for="firstName">First name:</label>
-		<input type="text" id="firstName" name="firstName" [(ngModel)]="newContact.firstName">
-	</div>
-	<div>
-		<label for="surname">Surname:</label>
-		<input type="text" id="surname" name="surname" [(ngModel)]="newContact.surname">
-	</div>
-	<div>
-		<label for="email">E-mail address:</label>
-		<input type="text" id="email" name="email" [(ngModel)]="newContact.email">
+  <div>
+    <label for="firstName">First name:</label>
+    <input type="text" id="firstName" name="firstName" [(ngModel)]="newContact.firstName">
+  </div>
+  <div>
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname" [(ngModel)]="newContact.surname">
+  </div>
+  <div>
+    <label for="email">E-mail address:</label>
+    <input type="text" id="email" name="email" [(ngModel)]="newContact.email">
     <button>Add</button>
-	</div>
+  </div>
 </form>
 
 <h2>The contacts</h2>
 
 <table class="table">
-  <tr >
+  <tr>
     <th scope="col">Name</th>
     <th scope="col">E-mail address</th>
     <th scope="col"></th>
   </tr>
-  <tr scope="row" *ngFor="let contact of persons">
-    <td>{{contact.firstName}} {{contact.surname}}</td>
-    <td>{{contact.email}}</td>
+  <tr scope="row" *ngFor="let p of persons">
+    <td *ngIf="!p.edit">{{p.firstName}} {{p.surname}}</td>
+    <td *ngIf="p.edit">
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="p.firstName">
+      <input type="text" id="surname" name="surname" [(ngModel)]="p.surname">
+    </td>
+    <td *ngIf="!p.edit">{{p.email}}</td>
+    <td *ngIf="p.edit"><input type="text" id="email" name="email" [(ngModel)]="p.email"></td>
     <td>
       <div class="btn-group" role="group" aria-label="Basic example">
-        <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger" (click)="delete(contact)">Delete</button>
+        <button class="btn btn-primary" (click)="edit(p)">
+          <td *ngIf="!p.edit">Edit</td>
+          <td *ngIf="p.edit">Save</td>
+        </button>
+        <button class="btn btn-danger" (click)="delete(p)">Delete</button>
       </div>
     </td>
   </tr>
