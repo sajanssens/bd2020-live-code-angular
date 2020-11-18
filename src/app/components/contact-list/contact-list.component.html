@@ -16,12 +16,14 @@
         <td *ngIf="p.edit"><input type="text" id="email" name="email" [(ngModel)]="p.email"></td>
         <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-            <button class="btn btn-primary" (click)="edit(p)">
-                <td *ngIf="!p.edit">Edit</td>
-                <td *ngIf="p.edit">Save</td>
-            </button>
-            <button class="btn btn-danger" (click)="delete(p)">Delete</button>
+                <button class="btn btn-primary" (click)="edit(p)">
+        <td *ngIf="!p.edit">Edit</td>
+        <td *ngIf="p.edit">Save</td>
+        </button>
+        <button class="btn btn-danger" (click)="delete(p)">Delete</button>
         </div>
         </td>
     </tr>
+    <!-- or with a row component: -->
+    <!-- <tr *ngFor="let c of persons" contact-row [contact]="c" (del)="delete($event)"></tr> -->
 </table>
