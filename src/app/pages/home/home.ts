@@ -1,16 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-@Component({  
+@Component({
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  imgloc  = "assets/img/werkplek.jpg"
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  imgloc = 'assets/img/werkplek.jpg';
 
 }
