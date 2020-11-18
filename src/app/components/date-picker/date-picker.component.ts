@@ -23,14 +23,7 @@ export class DatePickerComponent {
     { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
   ];
 
-  delete(p: Person): void {
-    const i = this.personList.indexOf(p);
-    this.personList.splice(i, 1);
-  }
 
-  edit(p: Person): void {
-    p.edit = !p.edit;
-  }
 
   personAdded(p: Person): void {
     this.personList.push(p);
