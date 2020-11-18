@@ -17,11 +17,11 @@
         <td>
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button class="btn btn-primary" (click)="edit(c)">
-        <td *ngIf="!c.edit">Edit</td>
-        <td *ngIf="c.edit">Save</td>
-        </button>
-        <button class="btn btn-danger" (click)="delete(c)">Delete</button>
-        </div>
+                    <span *ngIf="!c.edit">Edit</span>
+                    <span *ngIf="c.edit">Save</span>
+                </button>
+                <button class="btn btn-danger" (click)="delete(c)">Delete</button>
+            </div>
         </td>
     </tr>
     <!-- or with a row component: -->
