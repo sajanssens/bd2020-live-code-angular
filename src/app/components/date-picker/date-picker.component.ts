@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Contact } from 'src/app/models/Contact';
 import { Person } from 'src/app/models/Person';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-date-picker',
@@ -9,12 +10,11 @@ import { Person } from 'src/app/models/Person';
 })
 export class DatePickerComponent {
 
-  // Class --> object
-  personList: Person[] = [
-    new Person('Sam', 'Smith', 'sam.smith@music.com'),
-    new Person('Frank', 'Muscles', 'frank@muscles.com'),
-    new Person('Eddy', 'Valentino', 'eddy@valfam.co.uk')
-  ];
+  // private personService: ContactService;
+
+  constructor(private personService: ContactService) {
+    // this.personService = ps;
+  }
 
   // Interface --> JSON
   contacts: Contact[] = [
@@ -23,9 +23,12 @@ export class DatePickerComponent {
     { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
   ];
 
-
-
   personAdded(p: Person): void {
-    this.personList.push(p);
+    this.personService.add(p);
   }
+
+  getPersons(): Person[] {
+    return this.personService.getAllPersons();
+  }
+
 }
