@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Person } from 'src/app/models/Person';
+import { Contact } from 'src/app/models/Contact';
 
 @Component({
   selector: '[contact-row]',
   templateUrl: './contact-row.component.html'
 })
 export class ContactRowComponent {
-  @Input() contact: Person;
-  @Output() del = new EventEmitter<Person>();
+  @Input() contact: Contact;
+  @Output() del = new EventEmitter<Contact>();
 
   constructor() { }
 

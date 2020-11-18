@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Person } from 'src/app/models/Person';
+import { Contact } from 'src/app/models/Contact';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -9,15 +9,14 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class DatePickerComponent {
 
-  constructor(private personService: ContactService) {
-  }
-  
-  personAdded(p: Person): void {
-    this.personService.add(p);
+  constructor(private service: ContactService) { }
+
+  contactAdded(c: Contact): void {
+    this.service.add(c);
   }
 
-  getPersons(): Person[] {
-    return this.personService.getAllPersons();
+  getContacts(): Contact[] {
+    return this.service.getAll();
   }
 
 }

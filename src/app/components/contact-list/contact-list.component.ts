@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Person } from 'src/app/models/Person';
+import { Contact } from 'src/app/models/Contact';
 
 @Component({
   selector: 'app-contact-list',
@@ -8,15 +8,15 @@ import { Person } from 'src/app/models/Person';
 })
 export class ContactListComponent {
 
-  @Input() persons: Person[];
+  @Input() contacts: Contact[];
 
-  delete(p: Person): void {
-    const i = this.persons.indexOf(p);
-    this.persons.splice(i, 1);
+  delete(c: Contact): void {
+    const i = this.contacts.indexOf(c);
+    this.contacts.splice(i, 1);
   }
 
-  edit(p: Person): void {
-    p.edit = !p.edit;
+  edit(c: Contact): void {
+    c.edit = !c.edit;
   }
 
 }

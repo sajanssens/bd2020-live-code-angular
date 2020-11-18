@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Person } from 'src/app/models/Person';
+import { Contact } from 'src/app/models/Contact';
 
 @Component({
   selector: 'app-contact-form',
@@ -8,15 +8,14 @@ import { Person } from 'src/app/models/Person';
 })
 export class ContactFormComponent {
 
-  @Input() persons: Person[];
-  @Output() personAdded = new EventEmitter<Person>();
+  @Input() contacts: Contact[];
+  @Output() contactAdded = new EventEmitter<Contact>();
 
-  newContact = new Person();
+  newContact = {} as Contact;
 
   addContact(): void {
-    // this.persons.push(this.newContact);
-    this.personAdded.emit(this.newContact);
-    this.newContact = new Person();
+    this.contactAdded.emit(this.newContact);
+    this.newContact = {} as Contact;
   }
 
 }

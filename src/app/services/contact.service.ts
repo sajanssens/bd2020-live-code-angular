@@ -1,23 +1,33 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Person } from 'src/app/models/Person';
+import { Contact } from '../models/Contact';
 
-@Injectable({providedIn: 'root' })
+@Injectable({ providedIn: 'root' })
 export class ContactService {
 
+  private url = 'http://localhost:9688/contacts';
+
   // Class --> object
-  personList: Person[] = [
-    new Person('Sam', 'Smith', 'sam.smith@music.com'),
-    new Person('Frank', 'Muscles', 'frank@muscles.com'),
-    new Person('Eddy', 'Valentino', 'eddy@valfam.co.uk')
+  contactList: Contact[] = [
+    { firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com' },
+    { firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com' },
+    { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) {
 
-  getAllPersons(): Person[] {
-    return this.personList;
   }
 
-  add(p: Person): void {
-    this.personList.push(p);
+  getAll(): Contact[] {
+    // this.http.get<Contact[]>(this.url).subscribe(contacts => this.printContacts(contacts));
+    return this.contactList;
+  }
+
+  add(c: Contact): void {
+    this.contactList.push(c);
+  }
+
+  printContacts(c: Contact[]): void {
+    console.log(c);
   }
 }
