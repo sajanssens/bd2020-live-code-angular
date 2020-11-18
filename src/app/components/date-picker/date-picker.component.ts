@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Contact } from 'src/app/models/Contact';
 import { Person } from 'src/app/models/Person';
 
-
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
@@ -10,10 +9,8 @@ import { Person } from 'src/app/models/Person';
 })
 export class DatePickerComponent {
 
-  newContact = new Person();
-
   // Class --> object
-  persons: Person[] = [
+  personList: Person[] = [
     new Person('Sam', 'Smith', 'sam.smith@music.com'),
     new Person('Frank', 'Muscles', 'frank@muscles.com'),
     new Person('Eddy', 'Valentino', 'eddy@valfam.co.uk')
@@ -26,18 +23,16 @@ export class DatePickerComponent {
     { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
   ];
 
-  addContact(): void {
-    // this.contacts.push(this.newContact);
-    this.persons.push(this.newContact);
-    this.newContact = new Person();
-  }
-
   delete(p: Person): void {
-    const i = this.persons.indexOf(p);
-    this.persons.splice(i, 1);
+    const i = this.personList.indexOf(p);
+    this.personList.splice(i, 1);
   }
 
   edit(p: Person): void {
     p.edit = !p.edit;
+  }
+
+  personAdded(p: Person): void {
+    this.personList.push(p);
   }
 }

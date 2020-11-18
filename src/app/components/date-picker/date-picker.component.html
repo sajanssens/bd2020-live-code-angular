@@ -1,22 +1,6 @@
 <h1>Datepicker</h1>
 
-<app-hello-world message="eenBericht"></app-hello-world>
-
-<form (submit)="addContact()">
-  <div>
-    <label for="firstName">First name:</label>
-    <input type="text" id="firstName" name="firstName" [(ngModel)]="newContact.firstName">
-  </div>
-  <div>
-    <label for="surname">Surname:</label>
-    <input type="text" id="surname" name="surname" [(ngModel)]="newContact.surname">
-  </div>
-  <div>
-    <label for="email">E-mail address:</label>
-    <input type="text" id="email" name="email" [(ngModel)]="newContact.email">
-    <button>Add</button>
-  </div>
-</form>
+<app-contact-form (personAdded)="personAdded($event)" ></app-contact-form>
 
 <h2>The contacts</h2>
 
@@ -26,7 +10,7 @@
     <th scope="col">E-mail address</th>
     <th scope="col"></th>
   </tr>
-  <tr scope="row" *ngFor="let p of persons">
+  <tr scope="row" *ngFor="let p of personList">
     <td *ngIf="!p.edit">{{p.firstName}} {{p.surname}}</td>
     <td *ngIf="p.edit">
       <input type="text" id="firstName" name="firstName" [(ngModel)]="p.firstName">
@@ -37,11 +21,11 @@
     <td>
       <div class="btn-group" role="group" aria-label="Basic example">
         <button class="btn btn-primary" (click)="edit(p)">
-          <td *ngIf="!p.edit">Edit</td>
-          <td *ngIf="p.edit">Save</td>
-        </button>
-        <button class="btn btn-danger" (click)="delete(p)">Delete</button>
-      </div>
+    <td *ngIf="!p.edit">Edit</td>
+    <td *ngIf="p.edit">Save</td>
+    </button>
+    <button class="btn btn-danger" (click)="delete(p)">Delete</button>
+    </div>
     </td>
   </tr>
 </table>

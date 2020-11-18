@@ -1,0 +1,15 @@
+<form (submit)="addContact()">
+    <div>
+        <label for="firstName">First name:</label>
+        <input type="text" id="firstName" name="firstName" [(ngModel)]="newContact.firstName">
+    </div>
+    <div>
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" name="surname" [(ngModel)]="newContact.surname">
+    </div>
+    <div>
+        <label for="email">E-mail address:</label>
+        <input type="text" id="email" name="email" [(ngModel)]="newContact.email">
+        <button>Add</button>
+    </div>
+</form>
