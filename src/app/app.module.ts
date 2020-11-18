@@ -7,9 +7,10 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 import { FormsDemoComponent } from './components/forms-demo/forms-demo.component';
 import { ModelDrivenFormComponent } from './components/forms-demo/model-driven-form/model-driven-form.component';
 import { TemplateDrivenFormComponent } from './components/forms-demo/template-driven-form/template-driven-form.component';
+import { HelloWorldComponent } from './components/hello-world/hello-world.component';
 import { HomeComponent } from './pages/home/home';
 
-let routes: Route[] = [
+const routes: Route[] = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'datepicker', component: DatePickerComponent },
@@ -18,14 +19,18 @@ let routes: Route[] = [
 
 @NgModule({
   declarations: [ // componenten van mijzelf 
-    AppComponent, TemplateDrivenFormComponent, DatePickerComponent, HomeComponent, ModelDrivenFormComponent, FormsDemoComponent
-  ], 
+    AppComponent,
+    DatePickerComponent,
+    FormsDemoComponent, TemplateDrivenFormComponent, ModelDrivenFormComponent,
+    HelloWorldComponent,
+    HomeComponent,
+  ],
   imports: [ // componenten van anderen die ik nodig heb
     BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule
-  ], 
+  ],
   exports: [ // openstellen voor anderen
-    
-  ], 
+
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

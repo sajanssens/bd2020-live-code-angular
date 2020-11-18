@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Contact } from 'src/app/models/Contact';
 import { Person } from 'src/app/models/Person';
 
 
@@ -10,21 +11,20 @@ import { Person } from 'src/app/models/Person';
 export class DatePickerComponent {
 
   newContact = new Person();
-  editLabel = 'Edit';
 
   // Class --> object
   persons: Person[] = [
     new Person('Sam', 'Smith', 'sam.smith@music.com'),
     new Person('Frank', 'Muscles', 'frank@muscles.com'),
     new Person('Eddy', 'Valentino', 'eddy@valfam.co.uk')
-  ]
+  ];
 
   // Interface --> JSON
-  // contacts: Contact[] = [
-  //   { firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com' },
-  //   { firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com' },
-  //   { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
-  // ];
+  contacts: Contact[] = [
+    { firstName: 'Sam', surname: 'Smith', email: 'sam.smith@music.com' },
+    { firstName: 'Frank', surname: 'Muscles', email: 'frank@muscles.com' },
+    { firstName: 'Eddy', surname: 'Valentino', email: 'eddy@valfam.co.uk' }
+  ];
 
   addContact(): void {
     // this.contacts.push(this.newContact);
@@ -39,6 +39,5 @@ export class DatePickerComponent {
 
   edit(p: Person): void {
     p.edit = !p.edit;
-    this.editLabel = p.edit ? 'Save' : 'Edit';
   }
 }

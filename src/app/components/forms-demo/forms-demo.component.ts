@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { HelloWorldComponent } from '../hello-world/hello-world.component';
 
 @Component({
   selector: 'app-forms-demo',
   templateUrl: './forms-demo.component.html',
   styleUrls: ['./forms-demo.component.css']
 })
-export class FormsDemoComponent implements OnInit {
+export class FormsDemoComponent {
 
-  constructor() { }
+  @ViewChild(HelloWorldComponent)
+  helloWorldComponent: HelloWorldComponent;
 
-  ngOnInit(): void {
+  eenBericht = 'Een berichtje uit de parent component';
+
+  handleThankYou(e: InputEvent): void {
+    console.log(e);
+    this.helloWorldComponent.message = 'Thanks...';
   }
-
 }
