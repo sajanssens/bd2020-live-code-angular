@@ -10,7 +10,8 @@ export class ContactService {
 
   contactsUpdated$ = new Subject<Contact[]>(); // event, can contain Contact[]
 
-  constructor(private http: HttpClient) {  }
+  constructor(private http: HttpClient) {
+  }
 
   getAll(): Observable<Contact[]> {
     this.http.get<Contact[]>(this.url) // get contacts from server
@@ -27,6 +28,11 @@ export class ContactService {
 
   add(c: Contact): void {
     this.http.post<Contact[]>(this.url, c) // post contact to server
+      .subscribe(() => this.getAll());  // when posted: getAll (refresh)
+  }
+
+  update(c: Contact): void {
+    this.http.put<Contact[]>(`${this.url}/${c.id}`, c) // put contact to server
       .subscribe(() => this.getAll());  // when posted: getAll (refresh)
   }
 

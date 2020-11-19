@@ -10,10 +10,8 @@ import {ContactService} from 'src/app/services/contact.service';
 export class ContactListComponent {
 
   contacts$ = this.service.getAll();
-  // contacts: Contact[];
 
   constructor(private service: ContactService) {
-    // this.contacts$.subscribe(data => this.contacts = data);
   }
 
   delete(c: Contact): void {
@@ -22,6 +20,7 @@ export class ContactListComponent {
 
   edit(c: Contact): void {
     c.edit = !c.edit;
+    this.service.update(c);
   }
 
 }

@@ -2,9 +2,10 @@
   "contacts": [
     {
       "id": 1,
-      "firstName": "Sam",
+      "firstName": "Sammie",
       "surname": "Smith",
-      "email": "sam.smith@music.com"
+      "email": "sam.smith@music.com",
+      "edit": false
     },
     {
       "id": 2,
@@ -17,6 +18,13 @@
       "firstName": "Eddy",
       "surname": "Valentino",
       "email": "eddy@valfam.co.uk"
+    },
+    {
+      "firstName": "Bram",
+      "surname": "Janssens",
+      "email": "s.a.janssens@gmail.com",
+      "id": 4,
+      "edit": false
     }
   ]
 }
