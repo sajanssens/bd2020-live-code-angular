@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Contact } from 'src/app/models/Contact';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-contact-list',
@@ -8,11 +9,12 @@ import { Contact } from 'src/app/models/Contact';
 })
 export class ContactListComponent {
 
-  @Input() contacts: Contact[];
+  contacts = this.service.getAll();
+
+  constructor(private service: ContactService) { }
 
   delete(c: Contact): void {
-    const i = this.contacts.indexOf(c);
-    this.contacts.splice(i, 1);
+    this.service.delete(c);
   }
 
   edit(c: Contact): void {

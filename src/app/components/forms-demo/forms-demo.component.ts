@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { HelloWorldComponent } from '../hello-world/hello-world.component';
+import {Component, ViewChild} from '@angular/core';
+import {HelloWorldComponent} from '../hello-world/hello-world.component';
+import {CartEvent} from '../../models/CartEvent';
 
 @Component({
   selector: 'app-forms-demo',
@@ -16,5 +17,11 @@ export class FormsDemoComponent {
   handleThankYou(e: InputEvent): void {
     console.log(e);
     this.helloWorldComponent.message = 'Thanks...';
+  }
+
+  handleChange(e: CartEvent): void {
+    const actionType = e.actionType;
+    const item = e.item;
+
   }
 }

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Contact } from 'src/app/models/Contact';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -8,13 +9,12 @@ import { Contact } from 'src/app/models/Contact';
 })
 export class ContactFormComponent {
 
-  @Input() contacts: Contact[];
-  @Output() contactAdded = new EventEmitter<Contact>();
-
   newContact = {} as Contact;
 
+  constructor(private service: ContactService) { }
+
   addContact(): void {
-    this.contactAdded.emit(this.newContact);
+    this.service.add(this.newContact);
     this.newContact = {} as Contact;
   }
 

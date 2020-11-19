@@ -3,4 +3,5 @@ export interface Contact {
     surname: string;
     email: string;
     edit?: boolean;
+    id?: number;
 }

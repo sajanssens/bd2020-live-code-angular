@@ -1,29 +1,31 @@
 <h2>The contacts</h2>
 
 <table class="table">
-    <tr>
-        <th scope="col">Name</th>
-        <th scope="col">E-mail address</th>
-        <th scope="col"></th>
-    </tr>
-    <tr scope="row" *ngFor="let c of contacts">
-        <td *ngIf="!c.edit">{{c.firstName}} {{c.surname}}</td>
-        <td *ngIf="c.edit">
-            <input type="text" id="firstName" name="firstName" [(ngModel)]="c.firstName">
-            <input type="text" id="surname" name="surname" [(ngModel)]="c.surname">
-        </td>
-        <td *ngIf="!c.edit">{{c.email}}</td>
-        <td *ngIf="c.edit"><input type="text" id="email" name="email" [(ngModel)]="c.email"></td>
-        <td>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button class="btn btn-primary" (click)="edit(c)">
-                    <span *ngIf="!c.edit">Edit</span>
-                    <span *ngIf="c.edit">Save</span>
-                </button>
-                <button class="btn btn-danger" (click)="delete(c)">Delete</button>
-            </div>
-        </td>
-    </tr>
-    <!-- or with a row component: -->
-    <!-- <tr *ngFor="let c of contacts" contact-row [contact]="c" (del)="delete($event)"></tr> -->
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">E-mail address</th>
+    <th scope="col"></th>
+  </tr>
+  <tr scope="row" *ngFor="let c of contacts">
+    <td *ngIf="!c.edit">{{c.firstName}} {{c.surname}}</td>
+    <td *ngIf="c.edit">
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="c.firstName">
+      <input type="text" id="surname" name="surname" [(ngModel)]="c.surname">
+    </td>
+    <td *ngIf="!c.edit">{{c.email}}</td>
+    <td *ngIf="c.edit"><input type="text" id="email" name="email" [(ngModel)]="c.email"></td>
+    <td>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="btn btn-primary" (click)="edit(c)">
+          <span *ngIf="!c.edit">Edit</span>
+          <span *ngIf="c.edit">Save</span>
+        </button>
+        <button class="btn btn-danger" (click)="delete(c)">Delete</button>
+      </div>
+    </td>
+  </tr>
+
+  <!-- or with a row component: -->
+  <!-- attribute selector -->
+  <!--   <tr *ngFor="let c of contacts" contact-row [contact]="c" (del)="delete($event)">  </tr>-->
 </table>

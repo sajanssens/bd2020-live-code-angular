@@ -1,15 +1,15 @@
-<form (submit)="addContact()">
+<form (submit)="addContact()" novalidate #f="ngForm">
     <div>
         <label for="firstName">First name:</label>
-        <input type="text" id="firstName" name="firstName" [(ngModel)]="newContact.firstName">
+        <input type="text" name="firstName" [(ngModel)]="newContact.firstName" required>
     </div>
     <div>
         <label for="surname">Surname:</label>
-        <input type="text" id="surname" name="surname" [(ngModel)]="newContact.surname">
+        <input type="text" name="surname" [(ngModel)]="newContact.surname" required>
     </div>
     <div>
         <label for="email">E-mail address:</label>
-        <input type="text" id="email" name="email" [(ngModel)]="newContact.email">
-        <button>Add</button>
+        <input type="text" name="email" [(ngModel)]="newContact.email" required>
+        <button [disabled]="f.invalid">Add</button>
     </div>
 </form>

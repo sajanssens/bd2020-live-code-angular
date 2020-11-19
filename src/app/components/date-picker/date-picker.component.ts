@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Contact } from 'src/app/models/Contact';
-import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-date-picker',
@@ -9,14 +7,6 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class DatePickerComponent {
 
-  constructor(private service: ContactService) { }
-
-  contactAdded(c: Contact): void {
-    this.service.add(c);
-  }
-
-  getContacts(): Contact[] {
-    return this.service.getAll();
-  }
+  // constructor(private service: ContactService) { }
 
 }
