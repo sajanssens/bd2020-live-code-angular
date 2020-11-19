@@ -6,8 +6,8 @@
     <th scope="col">E-mail address</th>
     <th scope="col"></th>
   </tr>
-  <tr scope="row" *ngFor="let c of contacts">
-    <td *ngIf="!c.edit">{{c.firstName}} {{c.surname}}</td>
+  <tr scope="row" *ngFor="let c of contacts$ | async"> <!-- neem een abonnement op een getAll-->
+    <td *ngIf="!c.edit">{{c.firstName}} {{c.surname | uppercase}}</td>
     <td *ngIf="c.edit">
       <input type="text" id="firstName" name="firstName" [(ngModel)]="c.firstName">
       <input type="text" id="surname" name="surname" [(ngModel)]="c.surname">

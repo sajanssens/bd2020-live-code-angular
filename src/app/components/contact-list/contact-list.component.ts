@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Contact } from 'src/app/models/Contact';
-import { ContactService } from 'src/app/services/contact.service';
+import {Component} from '@angular/core';
+import {Contact} from 'src/app/models/Contact';
+import {ContactService} from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-contact-list',
@@ -9,9 +9,12 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class ContactListComponent {
 
-  contacts = this.service.getAll();
+  contacts$ = this.service.getAll();
+  // contacts: Contact[];
 
-  constructor(private service: ContactService) { }
+  constructor(private service: ContactService) {
+    // this.contacts$.subscribe(data => this.contacts = data);
+  }
 
   delete(c: Contact): void {
     this.service.delete(c);

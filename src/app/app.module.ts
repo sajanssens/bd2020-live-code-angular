@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { Route, RouterModule } from '@angular/router';
@@ -13,6 +13,10 @@ import { ModelDrivenFormComponent } from './components/forms-demo/model-driven-f
 import { TemplateDrivenFormComponent } from './components/forms-demo/template-driven-form/template-driven-form.component';
 import { HelloWorldComponent } from './components/hello-world/hello-world.component';
 import { HomeComponent } from './pages/home/home';
+import {registerLocaleData} from '@angular/common';
+import localeNL from '@angular/common/locales/nl';
+
+registerLocaleData(localeNL);
 
 const routes: Route[] = [
   { path: '', component: HomeComponent },
@@ -35,7 +39,9 @@ const routes: Route[] = [
   exports: [ // openstellen voor anderen
 
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'nl-NL' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
