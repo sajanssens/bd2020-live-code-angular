@@ -15,6 +15,7 @@ import { HelloWorldComponent } from './components/hello-world/hello-world.compon
 import { HomeComponent } from './pages/home/home';
 import {registerLocaleData} from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
+import { SearchContactComponent } from './components/search-contact/search-contact.component';
 
 registerLocaleData(localeNL);
 
@@ -32,6 +33,7 @@ const routes: Route[] = [
     FormsDemoComponent, TemplateDrivenFormComponent, ModelDrivenFormComponent,
     HelloWorldComponent,
     HomeComponent,
+    SearchContactComponent,
   ],
   imports: [ // componenten van anderen die ik nodig heb
     BrowserModule, FormsModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpClientModule

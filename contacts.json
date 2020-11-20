@@ -10,8 +10,9 @@
     {
       "id": 2,
       "firstName": "Frank",
-      "surname": "Frank",
-      "email": "frank@muscles.com"
+      "surname": "Muscles",
+      "email": "frank@muscles.com",
+      "edit": false
     },
     {
       "id": 3,

@@ -9,9 +9,10 @@ import {ContactService} from 'src/app/services/contact.service';
 })
 export class ContactListComponent {
 
-  contacts$ = this.service.getAll();
+  contacts$ = this.service.contactsUpdated$;
 
   constructor(private service: ContactService) {
+    this.service.getAll();
   }
 
   delete(c: Contact): void {
