@@ -12,8 +12,7 @@ export class ContactService {
   // tslint:disable-next-line:variable-name
   _contactsUpdated$ = new Subject<Contact[]>(); // event, can contain Contact[]
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) { }
 
   get contactsUpdated$(): Subject<Contact[]> {
     return this._contactsUpdated$;
@@ -61,7 +60,8 @@ export class ContactService {
           console.log(`no contacts matching "${trimmedTerm}"`)),
         // 2) handle errors if there are any
         catchError(this.handleError<Contact[]>('search', []))
-      ).subscribe(contacts => this.contactsUpdated$.next(contacts));
+      )
+      .subscribe(contacts => this.contactsUpdated$.next(contacts));
   }
 
   // tslint:disable-next-line:typedef

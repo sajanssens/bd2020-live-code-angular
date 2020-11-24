@@ -10,26 +10,25 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 })
 export class SearchContactComponent implements OnInit {
 
-  private searchTerms = new Subject<string>();
+  private searchTerms$ = new Subject<string>();
 
   constructor(private service: ContactService) {
   }
 
   // Push a search term into the observable stream.
   search(term: string): void {
-    console.log(`searching on ${term}`);
-    this.searchTerms.next(term);
+    this.searchTerms$.next(term);
   }
 
   ngOnInit(): void {
-    this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
+    this.searchTerms$.pipe(
+        // wait 300ms after each keystroke before considering the term
+        debounceTime(300),
 
-      // ignore new term if same as previous term
-      distinctUntilChanged(),
+        // ignore new term if same as previous term
+        distinctUntilChanged(),
 
-      // now execute the search
+        // now execute the search
       map((term: string) => this.service.search(term)),
     ).subscribe();
   }
