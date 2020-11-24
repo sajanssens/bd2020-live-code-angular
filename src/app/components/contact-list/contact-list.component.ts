@@ -20,7 +20,11 @@ export class ContactListComponent {
   }
 
   edit(c: Contact): void {
-    c.edit = !c.edit;
+    c.edit = true;
+  }
+
+  save(c: Contact): void {
+    c.edit = false;
     this.service.update(c);
   }
 
