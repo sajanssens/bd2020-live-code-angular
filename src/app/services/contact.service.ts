@@ -3,16 +3,18 @@ import {Injectable} from '@angular/core';
 import {Contact} from '../models/Contact';
 import {Observable, of, Subject} from 'rxjs';
 import {catchError, tap} from 'rxjs/operators';
+import {serverUrl} from '../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class ContactService {
 
-  private url = 'http://localhost:3000/contacts';
+  uri = serverUrl + '/contacts';
 
   // tslint:disable-next-line:variable-name
   _contactsUpdated$ = new Subject<Contact[]>(); // event, can contain Contact[]
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   get contactsUpdated$(): Subject<Contact[]> {
     return this._contactsUpdated$;
@@ -20,7 +22,7 @@ export class ContactService {
 
 
   getAll(): Observable<Contact[]> {
-    this.http.get<Contact[]>(this.url) // get contacts from server
+    this.http.get<Contact[]>(this.uri) // get contacts from server
       .subscribe(  // when the results arrive (some time in the future):
         // rise the contactsUpdated event and supply  the contacts
         contacts => this.contactsUpdated$.next(contacts)
@@ -33,17 +35,17 @@ export class ContactService {
   }
 
   add(c: Contact): void {
-    this.http.post<Contact[]>(this.url, c) // post contact to server
+    this.http.post<Contact>(this.uri, c) // post contact to server
       .subscribe(() => this.getAll());  // when posted: getAll (refresh)
   }
 
   update(c: Contact): void {
-    this.http.put<Contact[]>(`${this.url}/${c.id}`, c) // put contact to server
+    this.http.put<Contact[]>(`${this.uri}/${c.id}`, c) // put contact to server
       .subscribe(() => this.getAll());  // when posted: getAll (refresh)
   }
 
   delete(c: Contact): void {
-    this.http.delete(`${this.url}/${c.id}`) // delete contact from server
+    this.http.delete(`${this.uri}/${c.id}`) // delete contact from server
       .subscribe(() => this.getAll()); // when deleted: getAll (refresh)
   }
 
@@ -51,7 +53,7 @@ export class ContactService {
     // return !term.trim() ?
     //   of([]) :
     const trimmedTerm = term.trim();
-    this.http.get<Contact[]>(`${this.url}/?q=${trimmedTerm}`)
+    this.http.get<Contact[]>(`${this.uri}/?q=${trimmedTerm}`)
       .pipe(
         // Apply two operations on the result before returning:
         // 1) peak array and log appropriately

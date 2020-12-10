@@ -1,29 +1,31 @@
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {LOCALE_ID, NgModule} from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { Route, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { ContactFormComponent } from './components/contact-form/contact-form.component';
-import { ContactListComponent } from './components/contact-list/contact-list.component';
-import { ContactRowComponent } from './components/contact-row/contact-row.component';
-import { DatePickerComponent } from './components/date-picker/date-picker.component';
-import { FormsDemoComponent } from './components/forms-demo/forms-demo.component';
-import { ModelDrivenFormComponent } from './components/forms-demo/model-driven-form/model-driven-form.component';
-import { TemplateDrivenFormComponent } from './components/forms-demo/template-driven-form/template-driven-form.component';
-import { HelloWorldComponent } from './components/hello-world/hello-world.component';
-import { HomeComponent } from './pages/home/home';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {Route, RouterModule} from '@angular/router';
+import {AppComponent} from './app.component';
+import {ContactFormComponent} from './components/contact-form/contact-form.component';
+import {ContactListComponent} from './components/contact-list/contact-list.component';
+import {ContactRowComponent} from './components/contact-row/contact-row.component';
+import {DatePickerComponent} from './components/date-picker/date-picker.component';
+import {FormsDemoComponent} from './components/forms-demo/forms-demo.component';
+import {ModelDrivenFormComponent} from './components/forms-demo/model-driven-form/model-driven-form.component';
+import {TemplateDrivenFormComponent} from './components/forms-demo/template-driven-form/template-driven-form.component';
+import {HelloWorldComponent} from './components/hello-world/hello-world.component';
+import {HomeComponent} from './pages/home/home';
 import {registerLocaleData} from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
-import { SearchContactComponent } from './components/search-contact/search-contact.component';
+import {SearchContactComponent} from './components/search-contact/search-contact.component';
+import {UserFormComponent} from './pages/login/user-form.component';
 
 registerLocaleData(localeNL);
 
 const routes: Route[] = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'datepicker', component: DatePickerComponent },
-  { path: 'formsdemo', component: FormsDemoComponent }
+  {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'datepicker', component: DatePickerComponent},
+  {path: 'formsdemo', component: FormsDemoComponent},
+  {path: 'login', component: UserFormComponent}
 ];
 
 @NgModule({
@@ -31,6 +33,7 @@ const routes: Route[] = [
     AppComponent,
     DatePickerComponent, ContactFormComponent, ContactListComponent, ContactRowComponent,
     FormsDemoComponent, TemplateDrivenFormComponent, ModelDrivenFormComponent,
+    UserFormComponent,
     HelloWorldComponent,
     HomeComponent,
     SearchContactComponent,
@@ -42,8 +45,9 @@ const routes: Route[] = [
 
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'nl-NL' },
+    {provide: LOCALE_ID, useValue: 'nl-NL'},
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
