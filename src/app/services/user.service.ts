@@ -6,9 +6,11 @@ import {User} from '../models/User';
 
 @Injectable({providedIn: 'root'})
 export class UserService {
-  private token: string;
+
   private uri = serverUrl + '/users';
-  private loggedInUser = {} as User;
+  loggedInUser = {} as User;
+
+  loggedInUsername$ = new Subject<string>();
 
   message$ = new Subject<string>();
 
@@ -20,11 +22,12 @@ export class UserService {
       .subscribe(
         data => {
           this.loggedInUser = data;
+          this.loggedInUsername$.next(this.loggedInUser.username);
           this.message$.next(`Gebruiker ${data.username} is ingelogd.`);
         },
         error => {
           console.log(error);
-          this.message$.next(`Inloggen is mislukt.  Reden: ${error.statusText}`);
+          this.message$.next(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
         }
       );
 

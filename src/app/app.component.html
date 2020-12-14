@@ -2,6 +2,9 @@
   <li><a routerLink="/home" routerLinkActive="activeMenu">Home</a></li>
   <li><a routerLink="/datepicker" routerLinkActive="activeMenu">Labs</a></li>
   <li><a routerLink="/formsdemo" routerLinkActive="activeMenu">Forms demo</a></li>
-  <!-- <li><a>{{today}}</a></li> -->
+  <li><a routerLink="/{{logLink}}" routerLinkActive="activeMenu">{{logLabel}}</a></li>
 </ul>
+<div class="user" *ngIf="!isLoggedIn()">Not logged in.</div>
+<div class="user" *ngIf="isLoggedIn()">Logged in as {{loggedInUsername}}.</div>
+
 <router-outlet></router-outlet>
