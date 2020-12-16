@@ -1,4 +1,4 @@
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
@@ -16,16 +16,20 @@ import {HomeComponent} from './pages/home/home';
 import {registerLocaleData} from '@angular/common';
 import localeNL from '@angular/common/locales/nl';
 import {SearchContactComponent} from './components/search-contact/search-contact.component';
-import {UserFormComponent} from './pages/login/user-form.component';
+import {LoginComponent} from './pages/login/login.component';
+import {AuthGuard} from './util/auth.guard';
+import {JwtInterceptor} from './util/jwt.interceptor';
+import {LogoutComponent} from './pages/login/logout.component';
 
 registerLocaleData(localeNL);
 
 const routes: Route[] = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'datepicker', component: DatePickerComponent},
+  {path: 'datepicker', component: DatePickerComponent, canActivate: [AuthGuard]},
   {path: 'formsdemo', component: FormsDemoComponent},
-  {path: 'login', component: UserFormComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
 ];
 
 @NgModule({
@@ -33,7 +37,7 @@ const routes: Route[] = [
     AppComponent,
     DatePickerComponent, ContactFormComponent, ContactListComponent, ContactRowComponent,
     FormsDemoComponent, TemplateDrivenFormComponent, ModelDrivenFormComponent,
-    UserFormComponent,
+    LoginComponent, LogoutComponent,
     HelloWorldComponent,
     HomeComponent,
     SearchContactComponent,
@@ -46,6 +50,7 @@ const routes: Route[] = [
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'nl-NL'},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

@@ -3,11 +3,10 @@ import {User} from '../../models/User';
 import {UserService} from '../../services/user.service';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
 })
-export class UserFormComponent {
+export class LoginComponent {
 
   user = {} as User;
   message$ = this.service.message$;

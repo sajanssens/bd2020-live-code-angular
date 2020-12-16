@@ -8,9 +8,10 @@ import {User} from '../models/User';
 export class UserService {
 
   private uri = serverUrl + '/users';
-  loggedInUser = {} as User;
+  loggedInUser: User;
 
-  loggedInUsername$ = new Subject<string>();
+  loggedIn$ = new Subject<string>();
+  loggedOut$ = new Subject<string>();
 
   message$ = new Subject<string>();
 
@@ -22,16 +23,20 @@ export class UserService {
       .subscribe(
         data => {
           this.loggedInUser = data;
-          this.loggedInUsername$.next(this.loggedInUser.username);
+          this.loggedIn$.next(this.loggedInUser.username);
           this.message$.next(`Gebruiker ${data.username} is ingelogd.`);
+          localStorage.setItem('loggedInUser', JSON.stringify(data));
         },
         error => {
           console.log(error);
           this.message$.next(`Inloggen is mislukt.  Reden: ${error.statusText}.`);
         }
       );
+  }
 
-
+  logout(): void {
+    this.loggedInUser = null;
+    this.loggedOut$.next();
   }
 
   // tslint:disable-next-line:typedef

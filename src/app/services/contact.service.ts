@@ -53,7 +53,7 @@ export class ContactService {
     // return !term.trim() ?
     //   of([]) :
     const trimmedTerm = term.trim();
-    this.http.get<Contact[]>(`${this.uri}/?q=${trimmedTerm}`)
+    this.http.get<Contact[]>(`${this.uri}?q=${trimmedTerm}`)
       .pipe(
         // Apply two operations on the result before returning:
         // 1) peak array and log appropriately

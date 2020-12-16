@@ -26,6 +26,20 @@
       "email": "s.a.janssens@gmail.com",
       "id": 4,
       "edit": false
+    },
+    {
+      "firstName": "Gijs",
+      "surname": "Janssens",
+      "email": "gijs.j.janssens@gmail.com",
+      "id": 5,
+      "edit": false
+    },
+    {
+      "firstName": "Niek",
+      "surname": "Janssens",
+      "email": "n.s.janssens@gmail.com",
+      "id": 6
     }
-  ]
+  ],
+  "users": []
 }
