@@ -4,7 +4,7 @@ import {Observable, of, Subject} from 'rxjs';
 import {serverUrl} from '../../environments/environment';
 import {User} from '../models/User';
 
-@Injectable({providedIn: 'root'})
+@Injectable({providedIn: 'root'}) // ApplicationScoped
 export class UserService {
 
   private uri = serverUrl + '/users';
@@ -19,13 +19,18 @@ export class UserService {
   }
 
   login(u: User): void {
-    this.http.post<User>(`${this.uri}/login`, u)
+    this.http.post<User>(`${this.uri}/login`, u, {observe: 'response'} /* = to receive the full httpresponse instead of only the body */)
       .subscribe(
         data => {
-          this.loggedInUser = data;
+          // get the body from the response:
+          this.loggedInUser = data.body;
           this.loggedIn$.next(this.loggedInUser.username);
-          this.message$.next(`Gebruiker ${data.username} is ingelogd.`);
-          localStorage.setItem('loggedInUser', JSON.stringify(data));
+          this.message$.next(`Gebruiker ${this.loggedInUser.username} is ingelogd.`);
+          localStorage.setItem('loggedInUser', JSON.stringify(this.loggedInUser));
+
+          // or get a header from the response:
+          const token = data.headers.get('Authorization')?.substr(7);
+          localStorage.setItem('token', JSON.stringify(token));
         },
         error => {
           console.log(error);

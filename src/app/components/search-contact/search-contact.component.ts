@@ -29,7 +29,7 @@ export class SearchContactComponent implements OnInit {
         distinctUntilChanged(),
 
         // now execute the search
-      map((term: string) => this.service.search(term)),
+        map((term: string) => this.service.search(term)),
     ).subscribe();
   }
 }
